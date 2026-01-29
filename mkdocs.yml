@@ -1,0 +1,39 @@
+site_name: CoSEC (Building ...)
+site_url: https://pengshihan.com/CoSEC/
+
+theme:
+  name: material
+  language: en
+  logo: assets/logo.png
+  favicon: assets/favicon.png
+
+  palette: 
+    scheme: default
+    primary: indigo
+    accent: blue
+
+  features:
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.sections
+    - navigation.top
+    - toc.follow
+    - content.code.copy
+
+extra_css:
+  - stylesheets/base.css
+  - stylesheets/components.css
+
+nav:
+  - Home: index.md
+  - Download: download.md
+
+plugins:
+  - search
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - attr_list
+  - md_in_html
