@@ -63,6 +63,7 @@
 }
 .card-preview {
   width: 700px;
+  height: 365px;
   background: #f0f0f0;
   padding: 10px;
   display: flex;
