@@ -2,14 +2,18 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://cosec.org.cn/</loc>
-         <lastmod>2026-05-12</lastmod>
+         <lastmod>2026-05-13</lastmod>
     </url>
     <url>
          <loc>https://cosec.org.cn/about/</loc>
-         <lastmod>2026-05-12</lastmod>
+         <lastmod>2026-05-13</lastmod>
     </url>
     <url>
          <loc>https://cosec.org.cn/download/</loc>
-         <lastmod>2026-05-12</lastmod>
+         <lastmod>2026-05-13</lastmod>
+    </url>
+    <url>
+         <loc>https://cosec.org.cn/format/</loc>
+         <lastmod>2026-05-13</lastmod>
     </url>
 </urlset>
