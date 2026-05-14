@@ -53,7 +53,13 @@
     
       <link rel="stylesheet" href="../stylesheets/base.css">
     
-      <link rel="stylesheet" href="../stylesheets/components.css">
+      <link rel="stylesheet" href="../stylesheets/index.css">
+    
+      <link rel="stylesheet" href="../stylesheets/download.css">
+    
+      <link rel="stylesheet" href="../stylesheets/format.css">
+    
+      <link rel="stylesheet" href="../stylesheets/about.css">
     
     <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -955,7 +961,248 @@ img_co_right/000010.png
 <div class="highlight"><pre><span></span><code>metric_depth_in_meters = stored_depth / 256.0
 </code></pre></div>
 <h3 id="segmentation">Segmentation</h3>
-<p>TBD</p>
+<p>Segmentation annotations are provided in JSON format in the <code>segment_co/</code> folder.</p>
+<div class="highlight"><pre><span></span><code>segment_co/
+├── 000000.json
+├── 000001.json
+├── 000002.json
+└── ...
+</code></pre></div>
+<p>Segmentation labels are only provided for the training set.</p>
+<p>Each JSON file is named by frame index and corresponds to the image frame pair with the same index.</p>
+<p>For example:</p>
+<div class="highlight"><pre><span></span><code>segment_co/000010.json
+img_co_left/000010.png
+img_co_right/000010.png
+</code></pre></div>
+<p>are corresponding samples.</p>
+<p>The segmentation annotations are stored as polygon-based JSON files rather than rasterized label maps. Each JSON file contains image-level metadata and a list of annotated polygon regions.</p>
+<p>A typical annotation file follows the structure below:</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2.4.0&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;imagePath&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;000000.png&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;imageWidth&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1200</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;imageHeight&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">624</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;shapes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;label&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;road&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;points&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="p">[</span><span class="mf">610.0</span><span class="p">,</span><span class="w"> </span><span class="mf">211.3</span><span class="p">],</span>
+<span class="w">        </span><span class="p">[</span><span class="mf">605.7</span><span class="p">,</span><span class="w"> </span><span class="mf">215.4</span><span class="p">],</span>
+<span class="w">        </span><span class="p">[</span><span class="mf">600.5</span><span class="p">,</span><span class="w"> </span><span class="mf">221.7</span><span class="p">]</span>
+<span class="w">      </span><span class="p">],</span>
+<span class="w">      </span><span class="nt">&quot;group_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;shape_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;polygon&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;label&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;car&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;points&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="p">[</span><span class="mf">10.1</span><span class="p">,</span><span class="w"> </span><span class="mf">257.7</span><span class="p">],</span>
+<span class="w">        </span><span class="p">[</span><span class="mf">20.3</span><span class="p">,</span><span class="w"> </span><span class="mf">258.4</span><span class="p">],</span>
+<span class="w">        </span><span class="p">[</span><span class="mf">23.6</span><span class="p">,</span><span class="w"> </span><span class="mf">302.6</span><span class="p">]</span>
+<span class="w">      </span><span class="p">],</span>
+<span class="w">      </span><span class="nt">&quot;group_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;stationary&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;shape_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;polygon&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;label&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;rider&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;points&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="p">[</span><span class="mf">1038.2</span><span class="p">,</span><span class="w"> </span><span class="mf">265.5</span><span class="p">],</span>
+<span class="w">        </span><span class="p">[</span><span class="mf">1034.0</span><span class="p">,</span><span class="w"> </span><span class="mf">270.1</span><span class="p">],</span>
+<span class="w">        </span><span class="p">[</span><span class="mf">1022.1</span><span class="p">,</span><span class="w"> </span><span class="mf">263.7</span><span class="p">]</span>
+<span class="w">      </span><span class="p">],</span>
+<span class="w">      </span><span class="nt">&quot;group_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;moving&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;shape_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;polygon&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>The main fields are:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>version</code></td>
+<td>Annotation format version</td>
+</tr>
+<tr>
+<td><code>imagePath</code></td>
+<td>Name of the corresponding image file</td>
+</tr>
+<tr>
+<td><code>imageWidth</code></td>
+<td>Image width in pixels</td>
+</tr>
+<tr>
+<td><code>imageHeight</code></td>
+<td>Image height in pixels</td>
+</tr>
+<tr>
+<td><code>shapes</code></td>
+<td>List of annotated polygon regions</td>
+</tr>
+<tr>
+<td><code>label</code></td>
+<td>Semantic category of the annotated region</td>
+</tr>
+<tr>
+<td><code>points</code></td>
+<td>Polygon vertices in image coordinates</td>
+</tr>
+<tr>
+<td><code>group_id</code></td>
+<td>Optional instance or association ID</td>
+</tr>
+<tr>
+<td><code>description</code></td>
+<td>Optional object state, such as <code>moving</code> or <code>stationary</code></td>
+</tr>
+<tr>
+<td><code>shape_type</code></td>
+<td>Shape type, usually <code>polygon</code></td>
+</tr>
+</tbody>
+</table>
+<p>The coordinate system follows the image coordinate convention. The origin is located at the top-left corner of the image, the x-axis points to the right, and the y-axis points downward.</p>
+<p>For example, a point:</p>
+<div class="highlight"><pre><span></span><code>[x, y] = [610.0, 211.3]
+</code></pre></div>
+<p>means that the vertex is located at pixel coordinate <code>x = 610.0</code>, <code>y = 211.3</code> in the image.</p>
+<p>When converting the polygon annotations into pixel-wise semantic label maps, please use the following class ID order:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;">Class ID</th>
+<th>Class Name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">0</td>
+<td><code>road</code></td>
+</tr>
+<tr>
+<td style="text-align: right;">1</td>
+<td><code>sidewalk</code></td>
+</tr>
+<tr>
+<td style="text-align: right;">2</td>
+<td><code>building</code></td>
+</tr>
+<tr>
+<td style="text-align: right;">3</td>
+<td><code>wall</code></td>
+</tr>
+<tr>
+<td style="text-align: right;">4</td>
+<td><code>fence</code></td>
+</tr>
+<tr>
+<td style="text-align: right;">5</td>
+<td><code>pole</code></td>
+</tr>
+<tr>
+<td style="text-align: right;">6</td>
+<td><code>traffic light</code></td>
+</tr>
+<tr>
+<td style="text-align: right;">7</td>
+<td><code>traffic sign</code></td>
+</tr>
+<tr>
+<td style="text-align: right;">8</td>
+<td><code>vegetation</code></td>
+</tr>
+<tr>
+<td style="text-align: right;">9</td>
+<td><code>terrain</code></td>
+</tr>
+<tr>
+<td style="text-align: right;">10</td>
+<td><code>sky</code></td>
+</tr>
+<tr>
+<td style="text-align: right;">11</td>
+<td><code>person</code></td>
+</tr>
+<tr>
+<td style="text-align: right;">12</td>
+<td><code>rider</code></td>
+</tr>
+<tr>
+<td style="text-align: right;">13</td>
+<td><code>car</code></td>
+</tr>
+<tr>
+<td style="text-align: right;">14</td>
+<td><code>truck</code></td>
+</tr>
+<tr>
+<td style="text-align: right;">15</td>
+<td><code>bus</code></td>
+</tr>
+<tr>
+<td style="text-align: right;">16</td>
+<td><code>train</code></td>
+</tr>
+<tr>
+<td style="text-align: right;">17</td>
+<td><code>motorcycle</code></td>
+</tr>
+<tr>
+<td style="text-align: right;">18</td>
+<td><code>bicycle</code></td>
+</tr>
+</tbody>
+</table>
+<p>In addition to the semantic classes listed above, the JSON annotations may also contain the following extra labels:</p>
+<table>
+<thead>
+<tr>
+<th>Label</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ignore</code></td>
+<td>Regions that should be ignored during training or evaluation</td>
+</tr>
+<tr>
+<td><code>static</code></td>
+<td>Static regions or objects not assigned to one of the official semantic classes</td>
+</tr>
+<tr>
+<td><code>dynamic</code></td>
+<td>Dynamic regions or objects not assigned to one of the official semantic classes</td>
+</tr>
+</tbody>
+</table>
+<p>These extra labels are not part of the official 19-class semantic ID order. When generating training or evaluation masks, pixels annotated as <code>ignore</code> should be assigned the ignore label. We recommend using <code>255</code> as the ignore label.</p>
+<p>For the <code>static</code> and <code>dynamic</code> labels, users may either keep them as auxiliary labels for custom experiments or map them to the ignore label for standard 19-class semantic segmentation.</p>
+<p>Some dynamic objects contain additional state information in the <code>description</code> field, such as:</p>
+<div class="highlight"><pre><span></span><code>moving
+stationary
+</code></pre></div>
+<p>The <code>description</code> field is not part of the semantic class ID. For semantic segmentation, objects with the same <code>label</code> should be mapped to the same class ID regardless of their motion state.</p>
+<p>The <code>group_id</code> field can be used to associate related instances. For example, a <code>rider</code> and the corresponding <code>motorcycle</code> or <code>bicycle</code> may share related instance/group information, which can be useful for instance-level or object-level analysis. For semantic segmentation, the <code>group_id</code> field is optional and does not affect the semantic class ID.</p>
+<p>Users can convert the polygon annotations into pixel-wise semantic label maps according to their own training or evaluation pipeline. During conversion, each polygon should be rasterized to the corresponding class index.</p>
+<p>The segmentation annotations are aligned with the released rectified color images and event streams. Therefore, the segmentation label of frame <code>000010</code> can be used together with:</p>
+<div class="highlight"><pre><span></span><code>img_co_left/000010.png
+img_co_right/000010.png
+events_co_left.h5
+events_co_right.h5
+timestamps.txt
+</code></pre></div>
+<p>The timestamp of the corresponding frame can be found from the same line index in <code>timestamps.txt</code>.</p>
 
 
 

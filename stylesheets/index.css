@@ -1,0 +1,48 @@
+.cosec-cover-image {
+    width: 820px;
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto 1.5rem;
+  }
+  
+  /* Make section titles bold */
+  .md-typeset h2 {
+    font-weight: 700;
+  }
+  
+  /* News scroll box */
+  .cosec-news-box {
+    max-height: 250px;
+    overflow-y: auto;
+    padding-right: 0.5rem;
+  }
+  
+  /* News list */
+  .cosec-news-list {
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+  }
+  
+  .cosec-news-list li {
+    padding: 0.45rem 0;
+    border-bottom: 1px solid #eeeeee;
+    line-height: 1.6;
+  }
+  
+  .cosec-news-list li:last-child {
+    border-bottom: none;
+  }
+  
+  .cosec-news-date {
+    display: inline-block;
+    min-width: 5.2rem;
+    font-weight: 700;
+    color: #3f51b5;
+  }
+  
+  /* Citation block */
+  .md-typeset pre {
+    border-radius: 8px;
+  }

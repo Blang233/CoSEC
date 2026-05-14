@@ -1,0 +1,41 @@
+.cosec-about-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(11rem, 1fr));
+  gap: 1.2rem;
+  margin-top: 1.5rem;
+}
+
+.cosec-profile-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1.2rem 1rem;
+  border: 1px solid #e0e3ee;
+  border-radius: 0.6rem;
+  background: #fafbff;
+  text-decoration: none !important;
+  transition: all 0.15s ease;
+}
+
+.cosec-profile-card:hover {
+  transform: translateY(-2px);
+  border-color: #3f51b5;
+  box-shadow: 0 0.35rem 1rem rgba(63, 81, 181, 0.12);
+}
+
+.cosec-profile-avatar {
+  width: 6.5rem;
+  height: 6.5rem;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-bottom: 0.8rem;
+  border: 3px solid #ffffff;
+  box-shadow: 0 0.2rem 0.7rem rgba(0, 0, 0, 0.12);
+}
+
+.cosec-profile-name {
+  color: #2c3e50;
+  font-weight: 700;
+  font-size: 0.95rem;
+  text-align: center;
+}
